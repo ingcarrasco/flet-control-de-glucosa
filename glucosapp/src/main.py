@@ -6,6 +6,9 @@ def main(page: ft.Page):
     page.title = "💉🩸 Control de glucosa 🩸💉"
     page.bgcolor = ft.colors.BLUE_GREY_800
     page.theme_mode = "DARK"
+    page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
+    page.vertical_alignment = ft.MainAxisAlignment.CENTER
+    
 
     btn_add_glucemia = ft.TextField(label="Glucemia",hint_text="mg/dL", border_radius=20),
 
@@ -23,7 +26,6 @@ def main(page: ft.Page):
         page.controls.clear()
         page.add(
             navigation_bar,
-            ft.Text("ADD"),
             ft.TextField(label="Glucemia (mg/dL)",hint_text="mg/dL", border_radius=20,input_filter=(ft.InputFilter(regex_string=r'^[0-9]*\.?[0-9]*$', allow=True))),
             ft.ElevatedButton("Guardar", on_click=add_register)            
             
@@ -38,7 +40,7 @@ def main(page: ft.Page):
 
     def on_navigation_change(e):
         selected_index = e.control.selected_index
-        print(selected_index)
+        
         if selected_index == 0 :
             show_home()
         elif selected_index == 1 :
